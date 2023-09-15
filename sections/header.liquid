@@ -1,0 +1,62 @@
+<header class="header">
+  <h1>{{ shop.name }}</h1>
+
+  <ul>
+    {% for link in linklists.main-menu.links %}
+      <li>
+        {{ link.title | link_to: link.url }}
+      </li>
+    {% endfor %}
+
+  </ul>
+
+  {% if section.settings.show_search %}
+    <form action="/search">
+      <input type="search" name="q">
+      <button type="submit">Search</button>
+    </form>
+  {% endif %}
+
+</header>
+
+
+{% comment %}
+    Need to use style tag for settings of sections not work in stylesheet
+{% endcomment %}
+<style>
+    .header {
+        background-color: {{section.settings.bg}};
+    }
+</style>
+
+
+{% comment %}
+    Load css just for that section
+{% endcomment %}
+{% stylesheet %}
+    .header {
+        padding:1rem;
+    }
+{% endstylesheet %}
+
+{% javascript %}
+    console.log("hello header")
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_search",
+        "label": "Show search form?",
+        "default": true
+      }, {
+        "type": "color",
+        "id": "bg",
+        "label": "Background Color"
+      }
+    ]
+  }
+{% endschema %}

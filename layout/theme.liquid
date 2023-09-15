@@ -1,11 +1,14 @@
 <html lang="en">
   <head>
     {{ content_for_header }}
-    {% comment %}
     {{ 'style.css' | asset_url | stylesheet_tag }}
-    {% endcomment %}</head>
+
+  </head>
   <body>
+    {% comment %}
     {% render 'header' %}
+    {% endcomment %}
+    {% section 'header' %}
     {{ content_for_layout }}
 
     {% comment %}

@@ -1,5 +1,6 @@
 <h1>Product Template</h1>
 
+<img src={{product.featured_image | image_url:width:200}} alt="">
 <h2>{{ product.title }}</h2>
 <p>{{ product.price | money }}</p>
 <div>
@@ -12,5 +13,5 @@
       <option value={{variant.id}}>{{ variant.title }}</option>
     {% endfor %}
   </select>
-  <button type="submit">Add to Cart</button>
+  <button type="submit">{{ 'General.add_to_cart' | t }}</button>
 {% endform %}

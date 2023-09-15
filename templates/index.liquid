@@ -1,0 +1,25 @@
+{% comment %}
+<img src="{{ 'cat.png' | asset_url }}" alt="" />  
+{% endcomment %}
+
+<section>
+  <main>
+    <h2>{{ collections['frontpage'].title }}</h2>
+
+    <div>
+      <ul>
+        {% for product in collections['frontpage'].products %}
+          <li>
+            <a href={{product.url}}>
+              <img src="{{product.featured_image | image_url: width:200}}" alt="">
+              <h3>
+                {{ product.title }}
+              </h3>
+              <p>{{ product.price | money }}</p>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </main>
+</section>

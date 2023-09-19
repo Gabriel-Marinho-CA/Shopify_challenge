@@ -1,61 +1,44 @@
-<header class="header">
-  <h1>{{ shop.name }}</h1>
-
-  <ul>
-    {% for link in linklists.main-menu.links %}
-      <li>
-        {{ link.title | link_to: link.url }}
-      </li>
-    {% endfor %}
-
-  </ul>
-
-  {% if section.settings.show_search %}
-    <form action="/search">
-      <input type="search" name="q">
-      <button type="submit">Search</button>
-    </form>
-  {% endif %}
-
+<header>
+  <div class="wrapper-top-bar-header">
+    <div class="top_bar">
+      <div class="top_bar_content">
+        <a href="#">
+          <img src="{{section.settings.Ico_franqueado | image_url: width:14 | image_tag}}" alt="">
+          <p>{{ section.settings.Franqueado }}</p>
+        </a>
+      </div>
+      <div class="top_bar_content">
+        <a href="#">
+          <img src="{{section.settings.Ico_nossas_lojas | image_url: width:14 | image_tag}}" alt="">
+          <p>{{ section.settings.Nossas-lojas }}</p>
+        </a>
+      </div>
+    </div>
+  </div>
 </header>
-
-
-{% comment %}
-    Need to use style tag for settings of sections not work in stylesheet
-{% endcomment %}
-<style>
-    .header {
-        background-color: {{section.settings.bg}};
-    }
-</style>
-
-
-{% comment %}
-    Load css just for that section
-{% endcomment %}
-{% stylesheet %}
-    .header {
-        padding:1rem;
-    }
-{% endstylesheet %}
-
-{% javascript %}
-    console.log("hello header")
-{% endjavascript %}
 
 {% schema %}
   {
-    "name": "Header",
+    "name": "Top bar",
     "settings": [
       {
-        "type": "checkbox",
-        "id": "show_search",
-        "label": "Show search form?",
-        "default": true
+        "type": "text",
+        "id": "Franqueado",
+        "label": "Top bar | Franqueado",
+        "default": "Seja um franqueado"
       }, {
-        "type": "color",
-        "id": "bg",
-        "label": "Background Color"
+        "type": "image_picker",
+        "id": "Ico_franqueado",
+        "label": "Image"
+      }, {
+        "type": "text",
+        "id": "Nossas-lojas",
+        "label": "Nossas lojas | texto",
+        "default": "Nossas Lojas"
+      }, {
+        "type": "image_picker",
+        "id": "Ico_nossas_lojas",
+        "label": "Image"
       }
     ]
   }

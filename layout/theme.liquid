@@ -1,7 +1,8 @@
 <html lang="en">
   <head>
     {{ content_for_header }}
-    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'custom-styles.css' | asset_url | stylesheet_tag }}
 
   </head>
   <body>

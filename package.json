@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^5.1.0",
+    "node-sass": "^9.0.0",
+    "sass": "^1.67.0"
+  },
+  "scripts": {
+  "start": "concurrently  \"theme watch --allow-live\" \"gulp watch\""
+  }
+}

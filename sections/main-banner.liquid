@@ -1,0 +1,55 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<style>
+  .slider-main img {
+    width: 100%;
+    height: auto;
+  }
+</style>
+
+
+<div class="slider-main">
+  <ul class="slider-wrapper">
+    {% for slide in section.blocks %}
+      {% case slide.type %}
+        {% when 'slide' %}
+        <li {{ slide.shopify_attributes }}>
+          {{ slide.settings.image_slide | image_url: width: 1920 | image_tag }}
+        </li>
+    {% else %}
+
+      {% endcase %}
+    {% endfor %}
+  </ul>
+</div>
+
+
+<script>
+
+  $(".slider-wrapper").slick({slidesToShow: 1, slidesToScroll: 1, arrows: true});
+</script>
+{% schema %}
+  {
+    "name": "Main Slider",
+    "tag": "section",
+    "settings": [],
+    "max_blocks": 5,
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image_slide",
+            "label": "Slider image"
+          }
+        ]
+      }
+    ]
+  }
+{%endschema%}

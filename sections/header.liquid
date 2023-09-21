@@ -1,44 +1,74 @@
-<header>
-  <div class="wrapper-top-bar-header">
-    <div class="top_bar">
-      <div class="top_bar_content">
-        <a href="#">
-          <img src="{{section.settings.Ico_franqueado | image_url: width:14 | image_tag}}" alt="">
-          <p>{{ section.settings.Franqueado }}</p>
-        </a>
-      </div>
-      <div class="top_bar_content">
-        <a href="#">
-          <img src="{{section.settings.Ico_nossas_lojas | image_url: width:14 | image_tag}}" alt="">
-          <p>{{ section.settings.Nossas-lojas }}</p>
-        </a>
-      </div>
+<div class="header-content">
+  <div class="logo">
+    <a href="/"><img src="{{ section.settings.Logo_img | image_url: width: 43 }}"></a>
+  </div>
+  <div class="departments">
+    <nav>
+      <ul class="menu-departments">
+        {% for link in linklists.header.links %}
+          <li class="menu-link">
+            <a href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+            {% if link.links.size > 0 %}
+              <ul class="categories dropdown">
+                {% for categories in link.links %}
+                  <li class="menu-link">
+                    <a href={{categories.url}}>{{ categories.title }}</a>
+                    {% if categories.links.size > 0 %}
+                      <ul class="subcategories dropdown">
+                        {% for subcategories in categories.links %}
+                          <li class="menu-link">
+                            <a href={{subcategories.url}}>{{ subcategories.title }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+  <div class="user-actions">
+    <div class="login">
+      login
+    </div>
+    <div class="search">
+      <form action="{{routes.search_url}}" class="search-form">
+        <input
+          type="text"
+          name="q"
+          placeholder="Digite aqui o produto ou marca">
+        <button type="submit">OK!</button>
+      </form>
+    </div>
+    <div class="mini-cart">
+      minicart
     </div>
   </div>
-</header>
+</div>
+
+<script>
+  $("header .menu-link").hover(function() {
+    $(this).addClass("open");
+    $(this).children("ul").addClass("open");
+  }, function() {
+    $(this).children("ul").removeClass("open");
+  })
+</script>
 
 {% schema %}
   {
-    "name": "Top bar",
+    "name": "Header",
     "settings": [
       {
-        "type": "text",
-        "id": "Franqueado",
-        "label": "Top bar | Franqueado",
-        "default": "Seja um franqueado"
-      }, {
         "type": "image_picker",
-        "id": "Ico_franqueado",
-        "label": "Image"
-      }, {
-        "type": "text",
-        "id": "Nossas-lojas",
-        "label": "Nossas lojas | texto",
-        "default": "Nossas Lojas"
-      }, {
-        "type": "image_picker",
-        "id": "Ico_nossas_lojas",
-        "label": "Image"
+        "id": "Logo_img",
+        "label": "Logo img"
       }
     ]
   }

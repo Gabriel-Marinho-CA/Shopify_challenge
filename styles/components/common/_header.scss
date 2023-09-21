@@ -1,13 +1,12 @@
-@use '../../variables/mixins'as *;
-
 $top_bar_color: #f4f4f4;
 
 header {
     .wrapper-top-bar-header {
         background-color: $top_bar_color;
         padding: .3rem;
+
         .top_bar {
-            @include calcContainerWidth($container-width);
+
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -19,6 +18,16 @@ header {
                     align-items: center;
                     gap: .2rem;
                 }
+            }
+        }
+    }
+
+    .header-content {
+        .dropdown {
+            display: none;
+
+            &.open {
+                display: block !important;
             }
         }
     }

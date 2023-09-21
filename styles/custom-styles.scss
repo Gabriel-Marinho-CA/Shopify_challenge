@@ -1,5 +1,6 @@
 /*========= COMMON IMPORTS ======= */
 
+@use './variables/mixins' as *;
 @import "./variables/colors";
 @import "./components/common/header";
 
@@ -25,6 +26,10 @@ body {
 
     a {
         text-decoration: none;
-        color: inherit;
+        color: inherit; 
     }
+}
+
+.container {
+    @include calcContainerWidth($container-width);
 }

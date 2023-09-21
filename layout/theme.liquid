@@ -3,16 +3,25 @@
     {{ content_for_header }}
     {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
     {{ 'custom-styles.css' | asset_url | stylesheet_tag }}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   </head>
+
   <body>
     {% comment %}
     {% render 'header' %}
     {% endcomment %}
-    {% section 'header' %}
-    {{ content_for_layout }}
+    <header>
+      {% sections 'header-group' %}
+    </header>
 
-    {% comment %}
+    <main>
+      {{ content_for_layout }}
+    </main>
+
+
+
     {{ 'script.js' | asset_url | script_tag }}
-    {% endcomment %}</body>
+
+  </body>
 </html>

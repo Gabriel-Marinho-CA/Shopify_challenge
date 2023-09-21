@@ -1,0 +1,18 @@
+{
+    "type": "header",
+    "name":"Header group",
+    "sections": {
+        "header": {
+            "type":"header",
+            "settings":{}
+        },
+        "top-bar-header": {
+            "type":"top-bar-header",
+            "settings":{}
+        }
+    },
+    "order": [
+        "top-bar-header",
+        "header"
+    ]
+}

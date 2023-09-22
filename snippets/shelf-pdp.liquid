@@ -1,0 +1,13 @@
+<div class="shelf-collection">
+  <div class="img-shelf">
+    {{ product.featured_image | img_tag }}
+  </div>
+  <div class="name-shelf">
+    <p>
+      {{ product.title }}
+    </p>
+  </div>
+  <div class="prices-shelf">
+    <p>{{ product.price | money }}</p>
+  </div>
+</div>

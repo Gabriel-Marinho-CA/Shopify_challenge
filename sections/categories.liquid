@@ -1,0 +1,60 @@
+<div class="categories">
+  <div class="info-category">
+    <h2>{{ section.settings.Title-category }}</h2>
+    <p>{{ section.settings.Description-category }}</p>
+  </div>
+  <ul class="categories-cards">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'card-category' %}
+        <li>
+          <a href="{{ block.settings.link-category }}">
+            {{ block.settings.card-category-image | image_url: width: 64 | image_tag }}
+            <p>{{ block.settings.category-card-text }}</p>
+          </a>
+        </li>
+      {% endcase %}
+
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+  {
+    "name": "Categorias",
+    "settings": [
+      {
+        "type": "text",
+        "id": "Title-category",
+        "label": "Titulo Categoria",
+        "default": "Kings Sneakers"
+      }, {
+        "type": "text",
+        "id": "Description-category",
+        "label": "Descrição categoria",
+        "default": "Encontre Air Jordan, Nike, Adidas, Vans, Converse e muito mais na maior multimarca de streetwear do Brasil"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Card-categories",
+        "type": "card-category",
+        "settings": [
+          {
+            "type": "url",
+            "id": "link-category",
+            "label": "Link Categoria"
+          }, {
+            "type": "image_picker",
+            "id": "card-category-image",
+            "label": "Imagem card categoria"
+          }, {
+            "type": "text",
+            "id": "category-card-text",
+            "label": "Texto card categoria"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

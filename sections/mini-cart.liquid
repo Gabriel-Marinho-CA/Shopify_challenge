@@ -1,0 +1,19 @@
+<div class="minicart">
+  <div class="close-btn">
+    <span>Carrinho</span>
+    <span>X</span>
+  </div>
+  <div class="items-minicart">
+    {% for item in cart.items %}
+      <div class="image-minicart">
+        <img src="{{item.image | image_url:width:100|img_tag}}" />
+      </div>
+      <div class="name-item-minicart">
+        <p>{{ item.title }}</p>
+      </div>
+      <div class="price-item-minicart">
+        <P>{{ item.final_price | money }}</P>
+      </div>
+    {% endfor %}
+  </div>
+</div>

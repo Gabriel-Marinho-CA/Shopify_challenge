@@ -6,10 +6,15 @@
 
 /*========= COMMON IMPORTS ======= */
 
+// ===== COMPONENTS ===== //
+@import './components/home.scss'; 
+
+// ===== COMPONENTS ===== //
+
 
 body {
     background-color: $bg-color;
-    color: $black-1;
+    color: $black-1; 
     padding: 0;
     margin: 0;
     box-sizing: border-box;

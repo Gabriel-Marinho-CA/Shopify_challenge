@@ -1,0 +1,12 @@
+<div class="showcase">
+  <ul>
+    {% assign collection = collections['Masculino'] %}
+    {% for product in collection.products limit: 5 %}
+      <li>
+        <a href="{{ product.url }}">
+          {% render 'shelf-pdp', product: product %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

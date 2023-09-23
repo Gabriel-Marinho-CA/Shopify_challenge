@@ -8,6 +8,7 @@
 
 // ===== COMPONENTS ===== //
 @import './components/home.scss'; 
+@import './components/product.scss';
 
 // ===== COMPONENTS ===== //
 
@@ -32,6 +33,9 @@ body {
     a {
         text-decoration: none;
         color: inherit; 
+    }
+    img {
+        height: auto;
     }
 }
 

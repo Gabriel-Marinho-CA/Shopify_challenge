@@ -1,6 +1,6 @@
 <div class="shelf-collection">
   <div class="img-shelf">
-    {{ product.featured_image | img_tag }}
+    {{ product.featured_image | img_url: '200x200' | img_tag }}
   </div>
   <div class="name-shelf">
     <p>
@@ -9,5 +9,14 @@
   </div>
   <div class="prices-shelf">
     <p>{{ product.price | money }}</p>
+  </div>
+  <div class="buy-btn">
+    <form method="post" action="/cart/add">
+      <input
+        type="hidden"
+        name="id"
+        value="{{ product.variants.first.id  }}">
+      <input type="submit" value="ADD TO CART">
+    </form>
   </div>
 </div>

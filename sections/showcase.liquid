@@ -1,0 +1,32 @@
+<div class="showcase">
+  <ul>
+    {% assign collection_name = section.settings.collectionName %}
+    {% assign collection = collections[collection_name] %}
+    {% for product in collection.products limit: 5 %}
+      <li>
+        <a href="{{ product.url }}">
+          {% render 'shelf-pdp', product: product %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+  {
+    "name": "Showcase",
+    "settings": [
+      {
+        "type": "text",
+        "id": "collectionName",
+        "label": "Name Collection",
+        "default": "Masculino"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Showcase Products"
+      }
+    ]
+  }
+{% endschema %}

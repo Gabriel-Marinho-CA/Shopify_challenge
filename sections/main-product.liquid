@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="product-page">
+    <div class="image-side">
+      {{ product.featured_image 
+       | image_url: width: 1000
+       | image_tag }}
+    </div>
+    <div class="product-content-side">
+      <div class="title-pdp">
+        <h2>{{ product.title }}</h2>
+      </div>
+
+      <div class="variants-pdp">
+        {% if product.variants.size > 0 %}
+          <ul>
+            {% for variant in product.variants %}
+              <li>
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ variant.id }}">
+                <span>
+                  {{ variant.title }}
+                </span>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <div class="prices-pdp">
+        <p>
+          <strong>{{ product.price | money }}</strong>
+        </p>
+      </div>
+      <div class="buy-btn-pdp">
+        {% form 'product', product %}
+          <input
+            type="hidden"
+            name=""
+            id="id_sku"
+            value="">
+          <button type="submit">
+            COMPRAR</button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  $(".variants-pdp li").on("click",function(e) {
+      const inputValueSku = $(this).children("input").val();
+
+       $("#id_sku").attr('value',inputValueSku);
+  })
+{% endjavascript %}

@@ -1,0 +1,21 @@
+{
+    "sections": {
+        "main": {
+          "type": "main-banner",
+          "settings": {}
+        },
+        "category": {
+            "type": "categories",
+            "settings": {}
+        },
+        "showcases": {
+            "type": "showcase",
+            "settings": {}
+        }
+    },
+    "order": [
+        "main",
+        "category",
+        "showcases"
+    ]
+}

@@ -1,15 +1,15 @@
-.home-page {
-    .categories-cards {
-        margin-top: 2rem;
-        display: flex;
-        justify-content: space-around;
-    }
+.categories-cards {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
 
-    .showcase {
-        ul {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1.3rem;
-        }
+.showcase {
+    margin-top: 2rem;
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+
     }
 }

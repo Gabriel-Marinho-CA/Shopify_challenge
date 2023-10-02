@@ -34,23 +34,26 @@
       </div>
       <div class="buy-btn-pdp">
         {% form 'product', product %}
-          <input
-            type="hidden"
-            name=""
-            id="id_sku"
-            value="">
-          <button type="submit">
-            COMPRAR</button>
+
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+      
+          <div class="buy-quantity">
+            <input min="1" type="number" id="quantity" name="quantity" value="1"/>
+            <button id="buy-checkout" type="submit">COMPRAR</button>
+          </div>
         {% endform %}
       </div>
+    
     </div>
   </div>
 </div>
 
 {% javascript %}
+
   $(".variants-pdp li").on("click",function(e) {
       const inputValueSku = $(this).children("input").val();
 
-       $("#id_sku").attr('value',inputValueSku);
+      $(".shopify-product-form input[name='id']").val(inputValueSku);
   })
+
 {% endjavascript %}
